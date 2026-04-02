@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pulse Finance Dashboard
 
-## Getting Started
+A clean and interactive finance dashboard UI built for the frontend assignment using Next.js App Router and React.
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What This Includes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Dashboard overview with summary cards for total balance, income, expenses, and filtered transaction count
+- Time-based balance trend visualization
+- Categorical spending breakdown visualization
+- Transaction list with search, filtering, sorting, and empty states
+- Frontend-only role simulation
+  - `Viewer` can explore data
+  - `Admin` can add and edit transactions
+- Insights section with highest spending category, month-over-month expense comparison, and a useful spending observation
+- Local state management with React hooks
+- Local storage persistence for transactions, selected role, and theme
+- Responsive design for desktop and mobile
+- Optional enhancements included
+  - Dark mode toggle
+  - JSON and CSV export
 
-## Learn More
+## Approach
 
-To learn more about Next.js, take a look at the following resources:
+This submission keeps the implementation frontend-focused and intentionally lightweight:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Mock financial data is used instead of a backend
+- UI logic, filters, theme, and role handling are managed on the client
+- Charts are custom-built with simple SVG and CSS instead of a charting library
+- The design uses layered surfaces, strong typography contrast, and subtle motion to feel more polished than a default admin panel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Assignment Mapping
 
-## Deploy on Vercel
+### 1. Dashboard Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Summary cards: total balance, income, expenses
+- Time-based visualization: balance trend
+- Categorical visualization: expense breakdown by category
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Transactions Section
+
+- Each item shows date, amount, category, and type
+- Includes search, category/type filters, and sorting
+
+### 3. Basic Role Based UI
+
+- Role switcher in the hero controls
+- Admin gets add/edit actions
+- Viewer stays read-only
+
+### 4. Insights Section
+
+- Highest spending category
+- Monthly comparison
+- Additional spending observation
+
+### 5. State Management
+
+- React state handles transactions, filters, theme, modal state, and selected role
+- `useDeferredValue` is used for smoother search input updates
+
+### 6. UX Details
+
+- Mobile-friendly responsive layout
+- Clear filter reset flow
+- Empty state when no transactions match filters
+- Data export actions for better usability
+
+## Notes
+
+- This project is meant for evaluation and uses mock data by design.
+- The transaction dataset is persisted locally in the browser, so dashboard changes remain after refresh.
+# zorvyn.io-Assignment
