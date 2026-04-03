@@ -220,7 +220,7 @@ export function TransactionsSection({
         </button>
       </div>
 
-      <div className={`mt-6 overflow-hidden rounded-[28px] border ${isDark ? "border-white/10 bg-white/5" : "border-slate-200/80 bg-white/80"}`}>
+      <div className={`mt-6 overflow-hidden rounded-[28px] border ${isDark ? "border-white/10 bg-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" : "border-slate-200/80 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"}`}>
         <div className={`hidden grid-cols-[1.1fr_0.75fr_0.8fr_0.6fr_0.65fr_0.55fr] gap-4 border-b px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] md:grid ${isDark ? "border-white/10 text-slate-400" : "border-slate-200 text-slate-500"}`}>
           <span>Transaction</span>
           <span>Date</span>
@@ -235,7 +235,9 @@ export function TransactionsSection({
             {transactions.map((item) => (
               <div
                 key={item.id}
-                className="grid gap-3 px-5 py-4 md:grid-cols-[1.1fr_0.75fr_0.8fr_0.6fr_0.65fr_0.55fr] md:items-center"
+                className={`grid gap-3 px-5 py-4 transition md:grid-cols-[1.1fr_0.75fr_0.8fr_0.6fr_0.65fr_0.55fr] md:items-center ${
+                  isDark ? "hover:bg-white/[0.03]" : "hover:bg-slate-50/80"
+                }`}
               >
                 <div>
                   <p className={`font-semibold ${isDark ? "text-white" : "text-slate-900"}`}>{item.title}</p>
@@ -268,7 +270,11 @@ export function TransactionsSection({
                   {role === "admin" ? (
                     <button
                       type="button"
-                      className={`text-sm font-semibold transition ${isDark ? "text-teal-300 hover:text-teal-200" : "text-teal-700 hover:text-teal-900"}`}
+                      className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition ${
+                        isDark
+                          ? "bg-teal-500/10 text-teal-300 hover:bg-teal-500/15 hover:text-teal-200"
+                          : "bg-teal-50 text-teal-700 hover:bg-teal-100 hover:text-teal-900"
+                      }`}
                       onClick={() => onEditTransaction(item)}
                     >
                       Edit
@@ -284,14 +290,18 @@ export function TransactionsSection({
           </div>
         ) : (
           <div className="flex min-h-[220px] flex-col items-center justify-center gap-3 p-8 text-center">
-            <h3 className="text-lg font-bold text-slate-900">No transactions match the current view.</h3>
-            <p className="text-slate-500">
+            <h3 className={`text-lg font-bold ${isDark ? "text-white" : "text-slate-900"}`}>No transactions match the current view.</h3>
+            <p className={isDark ? "text-slate-400" : "text-slate-500"}>
               Try clearing filters, adjusting the search query, or add a new
               transaction if you are in admin mode.
             </p>
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5"
+              className={`inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+                isDark
+                  ? "border-white/15 bg-white/8 text-slate-200"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
               onClick={onResetFilters}
             >
               Clear filters

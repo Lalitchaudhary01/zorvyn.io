@@ -223,10 +223,10 @@ export default function Home() {
 
         <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr]">
           <article
-            className={`rounded-[30px] p-6 backdrop-blur-xl ${
+            className={`rounded-[30px] p-6 backdrop-blur-xl transition duration-300 ${
               theme === "dark"
-                ? "border border-white/12 bg-slate-950/55 shadow-[0_24px_80px_rgba(2,8,23,0.28)]"
-                : "border border-white/75 bg-white/80 shadow-[0_24px_80px_rgba(148,163,184,0.14)]"
+                ? "border border-white/12 bg-slate-950/55 shadow-[0_24px_80px_rgba(2,8,23,0.28)] hover:border-white/18"
+                : "border border-white/75 bg-white/80 shadow-[0_24px_80px_rgba(148,163,184,0.14)] hover:shadow-[0_28px_90px_rgba(148,163,184,0.18)]"
             }`}
           >
             <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
@@ -241,7 +241,7 @@ export default function Home() {
             <LineChart data={trendData} />
           </article>
 
-          <article className="rounded-[30px] border border-white/12 bg-[linear-gradient(180deg,#0b1220_0%,#09111d_100%)] p-6 text-slate-100 shadow-[0_24px_80px_rgba(2,8,23,0.28)] backdrop-blur-xl">
+          <article className="rounded-[30px] border border-white/12 bg-[linear-gradient(180deg,#0b1220_0%,#09111d_100%)] p-6 text-slate-100 shadow-[0_24px_80px_rgba(2,8,23,0.28)] backdrop-blur-xl transition duration-300 hover:border-white/18">
             <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
               <div>
                 <span className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-slate-400">Spending Breakdown</span>

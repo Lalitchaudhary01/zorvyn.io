@@ -19,13 +19,23 @@ export function HeroControls({
 
   return (
     <section
-      className={`rounded-[36px] p-6 backdrop-blur-xl ${
+      className={`relative overflow-hidden rounded-[36px] p-6 backdrop-blur-xl ${
         isDark
           ? "border border-white/15 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(249,115,22,0.08))] shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
           : "border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.84),rgba(255,237,213,0.92),rgba(204,251,241,0.75))] shadow-[0_24px_80px_rgba(148,163,184,0.18)]"
       }`}
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div
+        className={`pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full blur-3xl ${
+          isDark ? "bg-orange-400/20" : "bg-orange-300/35"
+        }`}
+      />
+      <div
+        className={`pointer-events-none absolute bottom-0 right-1/4 h-28 w-28 rounded-full blur-3xl ${
+          isDark ? "bg-teal-400/15" : "bg-teal-300/30"
+        }`}
+      />
+      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl space-y-4">
           <span
             className={`text-[0.72rem] font-bold uppercase tracking-[0.16em] ${
@@ -53,14 +63,14 @@ export function HeroControls({
             </p>
           </div>
           <div
-            className={`inline-flex flex-wrap items-center gap-3 rounded-full px-4 py-2 text-sm font-semibold ${
+            className={`inline-flex flex-wrap items-center gap-3 rounded-full border px-4 py-2 text-sm font-semibold shadow-sm ${
               role === "admin"
                 ? isDark
-                  ? "bg-emerald-500/15 text-emerald-300"
-                  : "bg-emerald-100 text-emerald-700"
+                  ? "border-emerald-400/15 bg-emerald-500/15 text-emerald-300"
+                  : "border-emerald-200 bg-emerald-100/90 text-emerald-700"
                 : isDark
-                  ? "bg-amber-500/15 text-amber-300"
-                  : "bg-amber-100 text-amber-700"
+                  ? "border-amber-400/15 bg-amber-500/15 text-amber-300"
+                  : "border-amber-200 bg-amber-100/90 text-amber-700"
             }`}
           >
             <span>{role === "admin" ? "Admin access enabled" : "Viewer mode enabled"}</span>
@@ -77,8 +87,8 @@ export function HeroControls({
           <label
             className={`flex min-w-0 flex-col justify-between gap-3 rounded-[24px] p-4 backdrop-blur-md ${
               isDark
-                ? "border border-white/10 bg-white/10 shadow-[0_12px_32px_rgba(2,8,23,0.16)]"
-                : "border border-white/80 bg-white/75 shadow-[0_12px_32px_rgba(148,163,184,0.14)]"
+                ? "border border-white/10 bg-white/10 shadow-[0_12px_32px_rgba(2,8,23,0.16)] transition hover:-translate-y-0.5"
+                : "border border-white/80 bg-white/75 shadow-[0_12px_32px_rgba(148,163,184,0.14)] transition hover:-translate-y-0.5"
             }`}
           >
             <span
@@ -108,8 +118,8 @@ export function HeroControls({
             type="button"
             className={`flex min-w-0 flex-col justify-between gap-3 rounded-[24px] p-4 text-left backdrop-blur-md ${
               isDark
-                ? "border border-white/10 bg-white/10 shadow-[0_12px_32px_rgba(2,8,23,0.16)]"
-                : "border border-white/80 bg-white/75 shadow-[0_12px_32px_rgba(148,163,184,0.14)]"
+                ? "border border-white/10 bg-white/10 shadow-[0_12px_32px_rgba(2,8,23,0.16)] transition hover:-translate-y-0.5"
+                : "border border-white/80 bg-white/75 shadow-[0_12px_32px_rgba(148,163,184,0.14)] transition hover:-translate-y-0.5"
             }`}
             onClick={onThemeToggle}
           >
